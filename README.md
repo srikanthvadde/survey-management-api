@@ -1,29 +1,4 @@
-# Introduction
-
-The Dropwizard example application was developed to, as its name implies, provide examples of some of the features
-present in Dropwizard.
-
-# Overview
-
-Included with this application is an example of the optional DB API module. The examples provided illustrate a few of
-the features available in [Hibernate](http://hibernate.org/), along with demonstrating how these are used from within
-Dropwizard.
-
-This database example is comprised of the following classes:
-
-* The `PersonDAO` illustrates using the Data Access Object pattern with assisting of Hibernate.
-
-* The `Person` illustrates mapping of Java classes to database tables with assisting of JPA annotations.
-
-* All the JPQL statements for use in the `PersonDAO` are located in the `Person` class.
-
-* `migrations.xml` illustrates the usage of `dropwizard-migrations` which can create your database prior to running
-your application for the first time.
-
-* The `PersonResource` and `PeopleResource` are the REST resource which use the PersonDAO to retrieve data from the database, note the injection
-of the PersonDAO in their constructors.
-
-As with all the modules the db example is wired up in the `initialize` function of the `HelloWorldApplication`.
+**Survey Management Application:**
 
 # Running The Application
 
@@ -31,24 +6,27 @@ To test the example application run the following commands.
 
 * To create the example, package the application using [Apache Maven](https://maven.apache.org/) from the root dropwizard directory.
 
-        cd dropwizard
-        ./mvnw package
-        cd dropwizard-example
+        git clone <url>
+        mvn clean install
+        mvn clean package
+        java -jar survey-management-api.jar
 
-* To setup the h2 database run.
+* To setup the  Docker
+        make sure docker running
+        docker build -t survey-management-api .  (to build image)
+        docker run -v ~/.oci:/root/.oci -p 8080:8080 survey-management-api  (to run as docker container)
 
-        java -jar target/dropwizard-example-$DW_VERSION.jar db migrate example.yml
 
-* To run the server run.
+* To hit the api  (hit refresh a few times).
 
-        java -jar target/dropwizard-example-$DW_VERSION.jar server example.yml
-
-* To hit the Hello World example (hit refresh a few times).
-
-	http://localhost:8080/hello-world
+	http://localhost:8080/surveys
 
 * To post data into the application.
 
-	curl -H "Content-Type: application/json" -X POST -d '{"fullName":"Other Person","jobTitle":"Other Title"}' http://localhost:8080/people
-	
-	open http://localhost:8080/people
+	curl -X POST http://localhost:8080/surveys \
+  -H "Content-Type: application/json" \
+  -d '{"age": 30, "gender": "male", "region": "US-East", "surveyID": "1234", "score": 4}'
+
+* test application:
+   use **test_script.py**  file for to post 10 requests and can test.  
+
