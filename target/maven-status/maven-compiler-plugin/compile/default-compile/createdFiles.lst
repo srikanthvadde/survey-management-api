@@ -1,0 +1,6 @@
+com/survey/management/SurveyManagementApplication.class
+com/survey/management/dtos/SurveyDataDto$SurveyDataDtoBuilder.class
+com/survey/management/services/OciLoggingService.class
+com/survey/management/SurveyManagementConfiguration.class
+com/survey/management/resources/SurveyManagementResource.class
+com/survey/management/dtos/SurveyDataDto.class

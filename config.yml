@@ -1,0 +1,9 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+  adminConnectors:
+    - type: http
+      port: 8081
+logId: "ocid1.log.oc1.phx.srikanth-survey-api-log-4242hgTYY-id"
+ociConfigPath: "~/.oci/config"
