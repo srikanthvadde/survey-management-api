@@ -12,6 +12,7 @@ To test the example application run the following commands.
         java -jar survey-management-api.jar
 
 * To setup the  Docker
+  
         make sure docker running
         docker build -t survey-management-api .  (to build image)
         docker run -v ~/.oci:/root/.oci -p 8080:8080 survey-management-api  (to run as docker container)
